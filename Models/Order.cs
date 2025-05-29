@@ -11,5 +11,5 @@ public class Order
     public int? TableNumber { get; set; }
     public decimal? Tip { get; set; }
     public decimal TotalCost { get; set; }
-    public string OrderTimne { get; set; }
+    public string OrderTime { get; set; }
 }
