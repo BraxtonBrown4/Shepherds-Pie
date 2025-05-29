@@ -1,4 +1,4 @@
-namespace ShepherdsPie.Model;
+namespace ShepherdsPie.Models;
 using System.ComponentModel.DataAnnotations;
 
 public class Topping
