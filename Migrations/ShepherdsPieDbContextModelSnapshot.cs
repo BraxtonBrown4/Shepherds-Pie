@@ -46,6 +46,20 @@ namespace MyApiWithPostgres.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "role-admin-guid-0001",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "role-employee-guid-0002",
+                            Name = "Employee",
+                            NormalizedName = "EMPLOYEE"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -135,6 +149,56 @@ namespace MyApiWithPostgres.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "e1-id-user",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "546676cf-b273-425f-8425-69650fe1e1c4",
+                            Email = "jamie.smith@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "JAMIE.SMITH@EXAMPLE.COM",
+                            NormalizedUserName = "JAMIE.SMITH",
+                            PasswordHash = "AQAAAAIAAYagAAAAEC7v5TUuEgI51w82TZPn75Zqz/P4NaW9tYWZH4qbd0gQd4+IPk+Jj1Q90MdSjaY5Mw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "56fea49d-5aff-4b95-8e5e-ad1dc1abb01d",
+                            TwoFactorEnabled = false,
+                            UserName = "jamie.smith"
+                        },
+                        new
+                        {
+                            Id = "e2-id-user",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "e7a02c73-98bd-40b4-8c5c-031bf2f09496",
+                            Email = "morgan.taylor@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "MORGAN.TAYLOR@EXAMPLE.COM",
+                            NormalizedUserName = "MORGAN.TAYLOR",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDOX+1DfAIP++3Y9zVctW09u75RzxGelCPGlcxGgDrPT0+O99haVjtwQGoTPN30Xyw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "0347a12e-9a98-4797-a9ed-595246159fc7",
+                            TwoFactorEnabled = false,
+                            UserName = "morgan.taylor"
+                        },
+                        new
+                        {
+                            Id = "e3-id-user",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "12305d1b-81e5-4c0c-8e5d-ec4accee7b37",
+                            Email = "alex.johnson@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ALEX.JOHNSON@EXAMPLE.COM",
+                            NormalizedUserName = "ALEX.JOHNSON",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA9J9K+9oibW3pUG+0w9w3V/1z5kDPQ56IuCzuNrpNPW6z1t4ECuRzKsnlkd/0RSqQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e0e3c303-06a1-4f0d-a032-5c8939ed9c65",
+                            TwoFactorEnabled = false,
+                            UserName = "alex.johnson"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -197,6 +261,23 @@ namespace MyApiWithPostgres.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "e1-id-user",
+                            RoleId = "role-employee-guid-0002"
+                        },
+                        new
+                        {
+                            UserId = "e2-id-user",
+                            RoleId = "role-employee-guid-0002"
+                        },
+                        new
+                        {
+                            UserId = "e3-id-user",
+                            RoleId = "role-employee-guid-0002"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -619,6 +700,59 @@ namespace MyApiWithPostgres.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ShepherdsPie.Models.UserProfile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityUserId");
+
+                    b.ToTable("UserProfiles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "123 Pizza Lane",
+                            FirstName = "Jamie",
+                            IdentityUserId = "e1-id-user",
+                            LastName = "Smith"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "456 Dough Street",
+                            FirstName = "Morgan",
+                            IdentityUserId = "e2-id-user",
+                            LastName = "Taylor"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "789 Crust Avenue",
+                            FirstName = "Alex",
+                            IdentityUserId = "e3-id-user",
+                            LastName = "Johnson"
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -668,6 +802,15 @@ namespace MyApiWithPostgres.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ShepherdsPie.Models.UserProfile", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
+
+                    b.Navigation("IdentityUser");
                 });
 #pragma warning restore 612, 618
         }

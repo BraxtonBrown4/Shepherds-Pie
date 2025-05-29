@@ -287,6 +287,46 @@ namespace MyApiWithPostgres.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "UserProfiles",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    IdentityUserId = table.Column<string>(type: "text", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserProfiles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserProfiles_AspNetUsers_IdentityUserId",
+                        column: x => x.IdentityUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "role-admin-guid-0001", null, "Admin", "ADMIN" },
+                    { "role-employee-guid-0002", null, "Employee", "EMPLOYEE" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "e1-id-user", 0, "546676cf-b273-425f-8425-69650fe1e1c4", "jamie.smith@example.com", true, false, null, "JAMIE.SMITH@EXAMPLE.COM", "JAMIE.SMITH", "AQAAAAIAAYagAAAAEC7v5TUuEgI51w82TZPn75Zqz/P4NaW9tYWZH4qbd0gQd4+IPk+Jj1Q90MdSjaY5Mw==", null, false, "56fea49d-5aff-4b95-8e5e-ad1dc1abb01d", false, "jamie.smith" },
+                    { "e2-id-user", 0, "e7a02c73-98bd-40b4-8c5c-031bf2f09496", "morgan.taylor@example.com", true, false, null, "MORGAN.TAYLOR@EXAMPLE.COM", "MORGAN.TAYLOR", "AQAAAAIAAYagAAAAEDOX+1DfAIP++3Y9zVctW09u75RzxGelCPGlcxGgDrPT0+O99haVjtwQGoTPN30Xyw==", null, false, "0347a12e-9a98-4797-a9ed-595246159fc7", false, "morgan.taylor" },
+                    { "e3-id-user", 0, "12305d1b-81e5-4c0c-8e5d-ec4accee7b37", "alex.johnson@example.com", true, false, null, "ALEX.JOHNSON@EXAMPLE.COM", "ALEX.JOHNSON", "AQAAAAIAAYagAAAAEA9J9K+9oibW3pUG+0w9w3V/1z5kDPQ56IuCzuNrpNPW6z1t4ECuRzKsnlkd/0RSqQ==", null, false, "e0e3c303-06a1-4f0d-a032-5c8939ed9c65", false, "alex.johnson" }
+                });
+
             migrationBuilder.InsertData(
                 table: "Cheeses",
                 columns: new[] { "Id", "Name" },
@@ -383,6 +423,26 @@ namespace MyApiWithPostgres.Migrations
                     { 8, "Extra Cheese", 0.5m }
                 });
 
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "role-employee-guid-0002", "e1-id-user" },
+                    { "role-employee-guid-0002", "e2-id-user" },
+                    { "role-employee-guid-0002", "e3-id-user" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserProfiles",
+                columns: new[] { "Id", "Address", "FirstName", "IdentityUserId", "LastName" },
+                values: new object[,]
+                {
+                    { 1, "123 Pizza Lane", "Jamie", "e1-id-user", "Smith" },
+                    { 2, "456 Dough Street", "Morgan", "e2-id-user", "Taylor" },
+                    { 3, "789 Crust Avenue", "Alex", "e3-id-user", "Johnson" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -419,6 +479,11 @@ namespace MyApiWithPostgres.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserProfiles_IdentityUserId",
+                table: "UserProfiles",
+                column: "IdentityUserId");
         }
 
         /// <inheritdoc />
@@ -465,6 +530,9 @@ namespace MyApiWithPostgres.Migrations
 
             migrationBuilder.DropTable(
                 name: "Toppings");
+
+            migrationBuilder.DropTable(
+                name: "UserProfiles");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
