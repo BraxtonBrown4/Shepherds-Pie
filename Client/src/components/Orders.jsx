@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react"
 import { getAllOrders } from "../managers/Orders.manager"
+import { X, Pizza } from "lucide-react"
+
 import "./Orders.css"
 
 export const Orders = () => {
     const [orders, setOrders] = useState([])
+    const [newOrderModal, setNewOrderModal] = useState(false)
     const getSetOrders = () => { getAllOrders().then(setOrders) }
+
+    const [employeeId, setEmployeeId] = useState(0)
 
     useEffect(() => {
         getSetOrders()
@@ -13,6 +18,7 @@ export const Orders = () => {
     return (
         <div className="orders-container">
             <h2 className="orders-title">Orders</h2>
+            <button onClick={() => setNewOrderModal(true)}>New Order<Pizza/></button>
             {
                 orders.map(o =>
                     <div className="order-card" key={o.id}>
@@ -48,6 +54,17 @@ export const Orders = () => {
                     </div>
                 )
             }
+
+            {newOrderModal && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <button onClick={() => setNewOrderModal(false)}><X/></button>
+                        <h3>New Order</h3>
+                        
+                        <p>Modal content goes here.</p>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
