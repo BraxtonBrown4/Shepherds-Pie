@@ -13,4 +13,5 @@ public class Pizza
     [Required]
     public int SauceId { get; set; }
     public decimal Price { get; set; }
+    public List<PizzaTopping> Toppings {get; set;}
 }
