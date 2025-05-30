@@ -1,0 +1,103 @@
+.orders-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f2f4f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2d3748;
+}
+
+.orders-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+}
+
+.order-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.order-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+
+.order-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.order-info p {
+    margin: 0.4rem 0;
+}
+
+.pizza-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.pizza-card {
+    background-color: #f1f5f9;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid #3182ce;
+}
+
+.pizza-card h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.pizza-card p {
+    margin: 0.3rem 0;
+}
+
+.toppings-list {
+    margin: 0.5rem 0 0.8rem;
+    padding-left: 1.25rem;
+}
+
+.toppings-list li {
+    list-style-type: disc;
+    color: #444;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
