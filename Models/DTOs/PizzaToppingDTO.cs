@@ -9,4 +9,6 @@ public class PizzaToppingDTO
     public int ToppingId { get; set; }
     [Required]
     public int PizzaId { get; set; }
+    
+    public Topping Topping { get; set; }
 }
