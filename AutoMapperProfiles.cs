@@ -16,5 +16,10 @@ public class AutoMapperProfiles : Profile
         CreateMap<PizzaToppingDTO, PizzaTopping>();
         CreateMap<PizzaTopping, PizzaToppingDTO>();
         CreateMap<Topping, ToppingDTO>();
+        CreateMap<Cheese, CheeseDTO>();
+        CreateMap<Sauce, SauceDTO>();
+        CreateMap<Size, SizeDTO>();
+        CreateMap<Deliverer, DelivererDTO>();
+        CreateMap<Employee, EmployeeDTO>();
     }
 }
