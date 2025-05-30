@@ -18,10 +18,10 @@ export const Orders = () => {
     const [deliverers, setDeliverers] = useState([])
 
     const [employees, setEmployees] = useState([])
-    const [employeeId, setEmployeeId] = useState(null)
+    const [employeeId, setEmployeeId] = useState(0)
     const [delivererId, setDelivererId] = useState(null)
     const [tableNumber, setTableNumber] = useState(null)
-    const [tip, setTip] = useState(null)
+    const [tip, setTip] = useState(0)
 
     const [newOrderModal, setNewOrderModal] = useState(false)
 
@@ -39,7 +39,7 @@ export const Orders = () => {
     return (
         <div className="orders-container">
             <h2 className="orders-title">Orders</h2>
-            <button onClick={() => setNewOrderModal(true)}>New Order<Pizza/></button>
+            <button onClick={() => {setNewOrderModal(true); setEmployeeId(Math.floor(Math.random() * employees.length) + 1);}}>New Order<Pizza/></button>
             {
                 orders.map(o =>
                     <div className="order-card" key={o.id}>
@@ -82,8 +82,8 @@ export const Orders = () => {
                         <button onClick={() => setNewOrderModal(false)}><X/></button>
                         <h3>New Order</h3>
                         <div>
-                            <span>Dellivery <input type="checkbox" checked={typeof(delivererId) == "number"} onChange={() => {setDelivererId(1); setTableNumber(null)}}/></span>
-                            <span>Dine In <input type="checkbox" checked={typeof(tableNumber) == "number"} onChange={() => {setTableNumber(1); setDelivererId(null)}}/></span>
+                            <span>Dellivery <input type="checkbox" checked={typeof(delivererId) == "number"} onChange={() => {setDelivererId(Math.floor(Math.random() * deliverers.length) + 1); setTableNumber(null)}}/></span>
+                            <span>Dine In <input type="checkbox" checked={typeof(tableNumber) == "number"} onChange={() => {setTableNumber(Math.floor(Math.random() * 15) + 1); setDelivererId(null)}}/></span>
                         </div>
 
                         <span>Tip $<input type="number" onChange={(e) => {setTip(parseInt(e.target.value))}}/></span>
