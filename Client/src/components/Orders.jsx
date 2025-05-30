@@ -1,21 +1,39 @@
 import { useEffect, useState } from "react"
 import { getAllOrders } from "../managers/Orders.manager"
+import { getAllToppings } from "../managers/Toppings.manager"
+import { getAllCheeses } from "../managers/Cheeses.manager"
+import { getAllSauces } from "../managers/Sauces.manager"
+import { getAllSizes } from "../managers/Sizes.manager"
+import { getAllDeliverers } from "../managers/Deliverers.manager"
+import { getAllEmployees } from "../managers/Employees.manager"
 import { X, Pizza } from "lucide-react"
-
 import "./Orders.css"
 
 export const Orders = () => {
     const [orders, setOrders] = useState([])
-    const [newOrderModal, setNewOrderModal] = useState(false)
-    const getSetOrders = () => { getAllOrders().then(setOrders) }
+    const [toppings, setToppings] = useState([])
+    const [cheeses, setCheeses] = useState([])
+    const [sauces, setSauces] = useState([])
+    const [sizes, setSizes] = useState([])
+    const [deliverers, setDeliverers] = useState([])
 
+    const [employees, setEmployees] = useState([])
     const [employeeId, setEmployeeId] = useState(null)
     const [delivererId, setDelivererId] = useState(null)
     const [tableNumber, setTableNumber] = useState(null)
     const [tip, setTip] = useState(null)
 
+    const [newOrderModal, setNewOrderModal] = useState(false)
+
+
     useEffect(() => {
-        getSetOrders()
+        getAllOrders().then(setOrders)
+        getAllToppings().then(setToppings)
+        getAllCheeses().then(setCheeses)
+        getAllSauces().then(setSauces)
+        getAllSizes().then(setSizes)
+        getAllDeliverers().then(setDeliverers)
+        getAllEmployees().then(setEmployees)
     }, [])
 
     return (
