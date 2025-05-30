@@ -9,7 +9,10 @@ export const Orders = () => {
     const [newOrderModal, setNewOrderModal] = useState(false)
     const getSetOrders = () => { getAllOrders().then(setOrders) }
 
-    const [employeeId, setEmployeeId] = useState(0)
+    const [employeeId, setEmployeeId] = useState(null)
+    const [delivererId, setDelivererId] = useState(null)
+    const [tableNumber, setTableNumber] = useState(null)
+    const [tip, setTip] = useState(null)
 
     useEffect(() => {
         getSetOrders()
@@ -60,8 +63,12 @@ export const Orders = () => {
                     <div className="modal-content">
                         <button onClick={() => setNewOrderModal(false)}><X/></button>
                         <h3>New Order</h3>
-                        
-                        <p>Modal content goes here.</p>
+                        <div>
+                            <span>Dellivery <input type="checkbox" checked={typeof(delivererId) == "number"} onChange={() => {setDelivererId(1); setTableNumber(null)}}/></span>
+                            <span>Dine In <input type="checkbox" checked={typeof(tableNumber) == "number"} onChange={() => {setTableNumber(1); setDelivererId(null)}}/></span>
+                        </div>
+
+                        <span>Tip $<input type="number" onChange={(e) => {setTip(parseInt(e.target.value))}}/></span>
                     </div>
                 </div>
             )}
