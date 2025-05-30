@@ -12,8 +12,8 @@ using ShepherdsPie.Data;
 namespace MyApiWithPostgres.Migrations
 {
     [DbContext(typeof(ShepherdsPieDbContext))]
-    [Migration("20250529162148_initial")]
-    partial class initial
+    [Migration("20250530140532_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,15 +158,15 @@ namespace MyApiWithPostgres.Migrations
                         {
                             Id = "e1-id-user",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "546676cf-b273-425f-8425-69650fe1e1c4",
+                            ConcurrencyStamp = "54c8a80d-56b6-475c-a2be-70ee76cb391f",
                             Email = "jamie.smith@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "JAMIE.SMITH@EXAMPLE.COM",
                             NormalizedUserName = "JAMIE.SMITH",
-                            PasswordHash = "AQAAAAIAAYagAAAAEC7v5TUuEgI51w82TZPn75Zqz/P4NaW9tYWZH4qbd0gQd4+IPk+Jj1Q90MdSjaY5Mw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGZlhEyLarps/yN9fm5T1cU47vX+o350aCfiUKqQKpZcwxI2Mr65ciXx7FBViPxi1g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "56fea49d-5aff-4b95-8e5e-ad1dc1abb01d",
+                            SecurityStamp = "155b159d-b524-472e-8cee-cade29ad4573",
                             TwoFactorEnabled = false,
                             UserName = "jamie.smith"
                         },
@@ -174,15 +174,15 @@ namespace MyApiWithPostgres.Migrations
                         {
                             Id = "e2-id-user",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e7a02c73-98bd-40b4-8c5c-031bf2f09496",
+                            ConcurrencyStamp = "0947d4fb-c0eb-43ba-9283-fe6950b64743",
                             Email = "morgan.taylor@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MORGAN.TAYLOR@EXAMPLE.COM",
                             NormalizedUserName = "MORGAN.TAYLOR",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDOX+1DfAIP++3Y9zVctW09u75RzxGelCPGlcxGgDrPT0+O99haVjtwQGoTPN30Xyw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECbml/JfbBgKR5JGmMSgeJ7rmlxZ4QJ5+PIgCBQc0YA6DgSbvJTqYi3753Dmt9D0xg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "0347a12e-9a98-4797-a9ed-595246159fc7",
+                            SecurityStamp = "ee1fdc68-e9d4-4455-b66b-a055cddf7d5a",
                             TwoFactorEnabled = false,
                             UserName = "morgan.taylor"
                         },
@@ -190,15 +190,15 @@ namespace MyApiWithPostgres.Migrations
                         {
                             Id = "e3-id-user",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "12305d1b-81e5-4c0c-8e5d-ec4accee7b37",
+                            ConcurrencyStamp = "2fdc7a7a-974b-408d-954c-1ad0910853c9",
                             Email = "alex.johnson@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ALEX.JOHNSON@EXAMPLE.COM",
                             NormalizedUserName = "ALEX.JOHNSON",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA9J9K+9oibW3pUG+0w9w3V/1z5kDPQ56IuCzuNrpNPW6z1t4ECuRzKsnlkd/0RSqQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJVNi9BFAwLoMxSyKWMIWakkwJplwFahtuvVcyUlrDqRDHgcOFosziVmQxAW9XSbiw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e0e3c303-06a1-4f0d-a032-5c8939ed9c65",
+                            SecurityStamp = "e5d4d35e-44f9-43d3-8eaf-1ebcaf2e2d37",
                             TwoFactorEnabled = false,
                             UserName = "alex.johnson"
                         });
@@ -484,7 +484,7 @@ namespace MyApiWithPostgres.Migrations
                         {
                             Id = 1,
                             CheeseId = 1,
-                            OrderId = 0,
+                            OrderId = 1,
                             Price = 10.00m,
                             SauceId = 1,
                             SizeId = 1
@@ -493,7 +493,7 @@ namespace MyApiWithPostgres.Migrations
                         {
                             Id = 2,
                             CheeseId = 2,
-                            OrderId = 0,
+                            OrderId = 1,
                             Price = 12.00m,
                             SauceId = 2,
                             SizeId = 2
@@ -502,7 +502,7 @@ namespace MyApiWithPostgres.Migrations
                         {
                             Id = 3,
                             CheeseId = 4,
-                            OrderId = 0,
+                            OrderId = 2,
                             Price = 15.00m,
                             SauceId = 4,
                             SizeId = 3
