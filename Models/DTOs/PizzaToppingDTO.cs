@@ -1,7 +1,7 @@
-namespace ShepherdsPie.Models;
+namespace ShepherdsPie.Models.DTOs;
 using System.ComponentModel.DataAnnotations;
 
-public class PizzaTopping
+public class PizzaToppingDTO
 {
     [Required]
     public int Id { get; set; }
@@ -9,6 +9,4 @@ public class PizzaTopping
     public int ToppingId { get; set; }
     [Required]
     public int PizzaId { get; set; }
-
-    public Topping Topping { get; set; }
 }

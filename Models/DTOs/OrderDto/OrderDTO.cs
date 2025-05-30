@@ -10,4 +10,5 @@ public class OrderDTO
     public decimal? Tip { get; set; }
     public decimal TotalCost { get; set; }
     public string OrderTime { get; set; }
+    public List<PizzaDTO> Pizza { get; set; }
 }

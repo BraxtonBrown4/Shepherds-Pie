@@ -1,5 +1,6 @@
 namespace ShepherdsPie.Models.DTOs;
 using System.ComponentModel.DataAnnotations;
+using ShepherdsPie.Models.DTOs;
 
 public class PizzaDTO
 {
@@ -13,4 +14,5 @@ public class PizzaDTO
     [Required]
     public int SauceId { get; set; }
     public decimal Price { get; set; }
+    public List<PizzaToppingDTO> Toppings { get; set; } = new List<PizzaToppingDTO>();
 }

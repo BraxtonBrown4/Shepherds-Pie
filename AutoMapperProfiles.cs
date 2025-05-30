@@ -9,6 +9,12 @@ public class AutoMapperProfiles : Profile
         // CreateMap<mapfrom, mapto>();
         CreateMap<Order, OrderDTO>();
         CreateMap<Order, OrderDetailsDTO>();
+        CreateMap<CreateOrderDTO, Order>();
+        CreateMap<CreateOrderDTO, PizzaDTO>();
         CreateMap<Pizza, PizzaDTO>();
+        CreateMap<PizzaDTO, Pizza>();
+        CreateMap<PizzaToppingDTO, PizzaTopping>();
+        CreateMap<PizzaTopping, PizzaToppingDTO>();
+        CreateMap<Topping, ToppingDTO>();
     }
 }
