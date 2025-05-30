@@ -84,6 +84,9 @@ export const Orders = () => {
                         <div>
                             <span>Dellivery <input type="checkbox" checked={typeof(delivererId) == "number"} onChange={() => {setDelivererId(Math.floor(Math.random() * deliverers.length) + 1); setTableNumber(null)}}/></span>
                             <span>Dine In <input type="checkbox" checked={typeof(tableNumber) == "number"} onChange={() => {setTableNumber(Math.floor(Math.random() * 15) + 1); setDelivererId(null)}}/></span>
+                            {/*
+                            need to create forms for pizzas, toppings cheese, sauce, size
+                            */}
                         </div>
 
                         <span>Tip $<input type="number" onChange={(e) => {setTip(parseInt(e.target.value))}}/></span>
