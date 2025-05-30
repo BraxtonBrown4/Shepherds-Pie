@@ -1,11 +1,9 @@
-namespace ShepherdsPie.Models;
+namespace ShepherdsPie.Models.DTOs;
 using System.ComponentModel.DataAnnotations;
 
-public class Order
+public class OrderDetailsDTO
 {
-    [Required]
     public int Id { get; set; }
-    [Required]
     public int EmployeeId { get; set; }
     public int? DelivererId { get; set; }
     public int? TableNumber { get; set; }

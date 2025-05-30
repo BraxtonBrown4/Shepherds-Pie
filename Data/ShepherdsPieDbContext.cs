@@ -169,9 +169,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
     );
 
     modelBuilder.Entity<Pizza>().HasData(
-        new Pizza { Id = 1, SizeId = 1, CheeseId = 1, SauceId = 1, Price = 10.00m },
-        new Pizza { Id = 2, SizeId = 2, CheeseId = 2, SauceId = 2, Price = 12.00m },
-        new Pizza { Id = 3, SizeId = 3, CheeseId = 4, SauceId = 4, Price = 15.00m }
+        new Pizza { Id = 1, OrderId = 1, SizeId = 1, CheeseId = 1, SauceId = 1, Price = 10.00m },
+        new Pizza { Id = 2, OrderId = 1, SizeId = 2, CheeseId = 2, SauceId = 2, Price = 12.00m },
+        new Pizza { Id = 3, OrderId = 2, SizeId = 3, CheeseId = 4, SauceId = 4, Price = 15.00m }
     );
 
     modelBuilder.Entity<PizzaTopping>().HasData(
