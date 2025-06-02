@@ -75,4 +75,30 @@ public IActionResult CreatePost([FromBody] CreateOrderDTO orderDto, IMapper mapp
     return Ok(mapper.Map<OrderDetailsDTO>(displayOrder));
 }
 
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var order = _db.Orders
+            .Include(o => o.Pizza)
+                .ThenInclude(p => p.Toppings)
+            .FirstOrDefault(o => o.Id == id);
+
+        if (order == null)
+        {
+            return NotFound();
+        }
+
+        foreach (var pizza in order.Pizza)
+        {
+            _db.PizzaToppings.RemoveRange(pizza.Toppings);
+        }
+
+        _db.Pizzas.RemoveRange(order.Pizza);
+
+        _db.Orders.Remove(order);
+
+        _db.SaveChanges();
+
+        return NoContent();
+    }
 }

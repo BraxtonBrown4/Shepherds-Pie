@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { CreateOrder, getAllOrders } from "../managers/Orders.manager";
+import { CreateOrder, getAllOrders, deleteOrder } from "../managers/Orders.manager";
 import { getAllToppings } from "../managers/Toppings.manager";
 import { getAllCheeses } from "../managers/Cheeses.manager";
 import { getAllSauces } from "../managers/Sauces.manager";
@@ -118,6 +118,11 @@ const resetForm = () => {
     <div className="order-grid">
       <div className="order-info">
         <h3>Order #{o.id}</h3>
+        <button onClick={() => {
+          deleteOrder(o.id).then(() => {
+            getAllOrders().then(setOrders);
+          });
+        }}>Delete</button>
         <p><strong>Employee ID:</strong> {o.employeeId}</p>
         <p><strong>Deliverer ID:</strong> {o.delivererId || "None"}</p>
         <p><strong>Table Number:</strong> {o.tableNumber || "None"}</p>

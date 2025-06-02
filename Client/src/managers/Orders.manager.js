@@ -11,5 +11,16 @@ export const CreateOrder = async(order) => {
   },
   body: JSON.stringify(order)
 })
- return res 
+ return res
+};
+
+export const deleteOrder = (id) => {
+  return fetch(`${apiUrl}/${id}`, {
+    method: "DELETE",
+  }).then((res) => {
+    if (!res.ok) {
+      throw new Error("Failed to delete order");
+    }
+    return res.status === 204 ? null : res.json();
+  });
 };
