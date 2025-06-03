@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { CreateOrder, getAllOrders, deleteOrder } from "../managers/Orders.manager";
+import { CreateOrder, getAllOrders, deleteOrder, updateOrder } from "../managers/Orders.manager";
 import { getAllToppings } from "../managers/Toppings.manager";
 import { getAllCheeses } from "../managers/Cheeses.manager";
 import { getAllSauces } from "../managers/Sauces.manager";
@@ -345,7 +345,7 @@ export const Orders = () => {
               </span>
               <p></p>
             </div>
-            <button >Submit</button>
+            <button onClick={() => {updateOrder(updatedOrder).then(() => {getAllOrders().then(setOrders); setUpdatedOrder({}); setEditOrderById(0)})}}>Submit</button>
             <button onClick={() => { setUpdatedOrder({}); setEditOrderById(0) }}>Cancel</button>
           </div>
         </div>
